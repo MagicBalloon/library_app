@@ -230,6 +230,12 @@ ActiveAdmin.setup do |config|
   #     end
   #   end
 
+  config.namespace :admin do |admin|
+    admin.build_menu :default do |menu|
+      menu.add label: 'Home page', url: '/', priority: 0, html_options: { target: :blank }
+    end
+  end
+
   # == Download Links
   #
   # You can disable download links on resource listing pages,
@@ -250,6 +256,11 @@ ActiveAdmin.setup do |config|
   #     admin.download_links = proc { can?(:view_download_links) }
   #
   #   end
+  #
+
+  config.namespace :admin do |admin|  
+    admin.download_links = false
+  end
 
   # == Pagination
   #
