@@ -15,10 +15,10 @@ ActiveAdmin.register Book do
       row :title
       row :description
       row :published_at
-      row 'Authors' do |b|
-        ol do
+      row 'Authors' do
+        ul do
           book.authors.map do |a|
-            li a.name
+            li link_to a.name, admin_author_path(a)
           end
         end
       end

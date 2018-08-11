@@ -14,10 +14,10 @@ ActiveAdmin.register Author do
       row :name
       row :email
       row ('Author ID') { author.id }
-      row 'Books' do |b|
-        ol do
-          author.books.map do |book|
-            li book.title
+      row 'Books' do
+        ul do
+          author.books.map do |b|
+            li link_to b.title, admin_book_path(b)
           end
         end
       end
