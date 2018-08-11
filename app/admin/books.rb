@@ -5,8 +5,14 @@ ActiveAdmin.register Book do
     selectable_column
     column :id
     column :title
-    column :author
-    column :published_at
+    column 'Authors' do |book|
+      ol do
+        book.authors.map do |a|
+          li link_to a.name, admin_author_path(a)
+        end
+      end
+    end
+    column ('Published') { |book| book.published_at.strftime('%d.%m.%Y %H:%M') }
     actions
   end
 
