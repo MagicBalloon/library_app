@@ -1,5 +1,5 @@
 ActiveAdmin.register Book do
-  permit_params :title, :description, :published, :published_at, :author_ids => []
+  permit_params :title, :description, :published, :published_at, :author_ids => [], :category_ids => []
 
   index do
     selectable_column
@@ -40,6 +40,7 @@ ActiveAdmin.register Book do
       input :published
       input :published_at
       input :author_ids, :label => 'Authors', :as => :select, multiple: true, :collection => Author.all.map{|a| ["#{a.name}", a.id]}
+      input :category_ids, :label => 'Categories', :as => :select, multiple: true, :collection => Category.all.map{|a| ["#{a.title}", a.id]}
     end
     f.actions
   end
