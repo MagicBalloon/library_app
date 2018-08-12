@@ -1,9 +1,9 @@
 class CategoriesController < InheritedResources::Base
+  before_action :set_category, only: [:show]
 
   private
-
-    def category_params
-      params.require(:category).permit(:title)
+    def set_category
+      @category = Category.find(params[:id])
     end
 end
 
