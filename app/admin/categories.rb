@@ -1,6 +1,16 @@
 ActiveAdmin.register Category do
   permit_params :title, :book_ids => []
 
+  index do
+    selectable_column
+    column :id
+    column :title
+    column 'Books' do |category|
+      category.books.size
+    end
+    actions
+  end
+
   show do
     attributes_table do
       row :title
