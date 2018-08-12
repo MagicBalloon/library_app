@@ -12,6 +12,13 @@ ActiveAdmin.register Book do
         end
       end
     end
+    column 'Categories' do |book|
+      ol do
+        book.categories.map do |c|
+          li link_to c.title, admin_category_path(c)
+        end
+      end
+    end
     column :published
     column ('Published at') { |book| book.published_at.strftime('%d.%m.%Y %H:%M') }
     actions
