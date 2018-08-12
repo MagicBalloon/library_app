@@ -37,6 +37,13 @@ ActiveAdmin.register Book do
           end
         end
       end
+      row 'Categories' do
+        ul do
+          book.categories.map do |c|
+            li link_to c.title, admin_category_path(c)
+          end
+        end
+      end
     end
   end
 
