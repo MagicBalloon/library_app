@@ -1,5 +1,5 @@
 ActiveAdmin.register Book do
-  permit_params :title, :description, :published_at, :author_ids => []
+  permit_params :title, :description, :published, :published_at, :author_ids => []
 
   index do
     selectable_column
@@ -12,7 +12,8 @@ ActiveAdmin.register Book do
         end
       end
     end
-    column ('Published') { |book| book.published_at.strftime('%d.%m.%Y %H:%M') }
+    column :published
+    column ('Published at') { |book| book.published_at.strftime('%d.%m.%Y %H:%M') }
     actions
   end
 
@@ -20,6 +21,7 @@ ActiveAdmin.register Book do
     attributes_table do
       row :title
       row :description
+      row :published, :label => 'Published'
       row :published_at
       row 'Authors' do
         ul do
@@ -35,6 +37,7 @@ ActiveAdmin.register Book do
     f.inputs 'Details' do
       input :title
       input :description
+      input :published
       input :published_at
       input :author_ids, :label => 'Authors', :as => :select, multiple: true, :collection => Author.all.map{|a| ["#{a.name}", a.id]}
     end
