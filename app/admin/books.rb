@@ -1,6 +1,22 @@
 ActiveAdmin.register Book do
   permit_params :title, :description, :published, :published_at, :author_ids => [], :category_ids => []
 
+  batch_action :publish do |selection|
+    Book.find(selection).each do |b|
+      b.published = true
+      b.save
+    end
+    redirect_to collection_path, :notice => "Books status updated!"
+  end
+
+  batch_action :unpublish do |selection|
+    Book.find(selection).each do |b|
+      b.published = false
+      b.save
+    end
+    redirect_to collection_path, :notice => "Books status updated!"
+  end
+
   index do
     selectable_column
     column :id
