@@ -40,6 +40,7 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'activeadmin'
 gem 'devise'
+gem 'mini_magick'
 
 
 group :development, :test do

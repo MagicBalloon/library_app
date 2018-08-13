@@ -6,7 +6,7 @@ ActiveAdmin.register Book do
       b.published = true
       b.save
     end
-    redirect_to collection_path, :notice => "Books status updated!"
+    redirect_to collection_path, :notice => "Book status updated!"
   end
 
   batch_action :unpublish do |selection|
@@ -14,7 +14,7 @@ ActiveAdmin.register Book do
       b.published = false
       b.save
     end
-    redirect_to collection_path, :notice => "Books status updated!"
+    redirect_to collection_path, :notice => "Book status updated!"
   end
 
   index do
@@ -45,7 +45,7 @@ ActiveAdmin.register Book do
       row :title
       row :description
       row 'Image' do |book|
-        image_tag book.image, class: 'my_image_size'
+        image_tag book.image.variant(resize: "400x400"), class: 'my_image_size'
       end
       row :published, :label => 'Published'
       row :published_at
