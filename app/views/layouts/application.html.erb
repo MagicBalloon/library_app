@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <%= render 'layouts/main_menu' %>
+    <%= render partial: 'layouts/main_menu', locals: {categories: Category.all} %>
     <div class="container">
       <%= yield %>
     </div>
