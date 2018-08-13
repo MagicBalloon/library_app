@@ -45,7 +45,7 @@ ActiveAdmin.register Book do
       row :title
       row :description
       row 'Image' do |book|
-        image_tag book.image.variant(resize: "400x400"), class: 'my_image_size'
+        book.image.attached? ? image_tag(book.image.variant(resize: "400x400")) : content_tag(:span, "No cover page yet")
       end
       row :published, :label => 'Published'
       row :published_at
@@ -72,7 +72,7 @@ ActiveAdmin.register Book do
       input :description
       input :published
       input :published_at
-      input :image, :as => :file
+      input :image, :as => :file, :hint => book.image.attached? ? image_tag(book.image.variant(resize: "400x400")) : content_tag(:span, "No cover page yet")
       input :author_ids, :label => 'Authors', :as => :select, multiple: true, :collection => Author.all.map{|a| ["#{a.name}", a.id]}
       input :category_ids, :label => 'Categories', :as => :select, multiple: true, :collection => Category.all.map{|a| ["#{a.title}", a.id]}
     end
