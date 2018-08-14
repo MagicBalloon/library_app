@@ -16,6 +16,7 @@
           <% categories.each do |category| %>
             <%= link_to(category.title, category, {class: "dropdown-item"}) %>
           <% end %>
+          <%= link_to("Все категории", categories_all_path, {class: "dropdown-item"}) %>
         </div>
       </li>
     </ul>
