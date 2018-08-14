@@ -4,7 +4,13 @@
 <div class="album mt-4 p-3 bg-white">
   <div class="row">
     <div class="col-lg-3">
-      <%= image_tag(@book.image.variant(resize: "400x400"), class: "book-cover border")  %>
+      <% if @book.image.attached? %>
+        <%= image_tag(@book.image.variant(resize: "400x400"), class: "book-cover border") %>
+      <% else %>
+        <div class="book-cover-ph">
+          <%= content_tag(:span, "No cover page yet") %>
+        </div>
+      <% end %>
     </div>
     <div class="col-lg-9">
       <ul class="list-group list-group-flush">
