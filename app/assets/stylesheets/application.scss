@@ -11,9 +11,9 @@
   body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
-    .container {
-      padding: 60px 15px 0;
-    }
+  }
+  main.container {
+    padding: 60px 15px 0;
   }
   .footer {
     position: absolute;
@@ -28,7 +28,11 @@
 /*------------------------------------------*/
 /*  Category
 /*------------------------------------------*/
-  .book-cover {object-fit: cover;}
+  .book-cover {
+    object-fit: cover;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+  }
   .book-cover-ph {
     width: 253px;
     height: 400px;
@@ -37,5 +41,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
     span {color: $gray-600;}
   }
