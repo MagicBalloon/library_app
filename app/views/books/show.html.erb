@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h1 class="mt-5"><%= @book.title %></h1>
-<div class="album py-4 bg-white">
+<h1 class="mt-3"><%= @book.title %></h1>
+<div class="album mt-4 p-3 bg-white">
   <div class="row">
     <div class="col-lg-3">
       <%= image_tag(@book.image.variant(resize: "400x400"), class: "book-cover border")  %>

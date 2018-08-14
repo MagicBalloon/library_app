@@ -1,5 +1,38 @@
-<h1>Home page</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-<ul>
-  <li><%= link_to("Home", root_path) %></li>
-</ul>
+<p id="notice"><%= notice %></p>
+
+<div class="recent-books p-3 bg-white rounded box-shadow">
+  <h4 class="border-bottom border-gray pb-2 mb-0">Недавно опубликованные книги</h4>
+  <div class="items">
+    <% @books.each do |book| %>
+      <div class="media pt-3 text-muted">
+        <div class="thumb mr-3">
+          <% if book.image.attached? %>
+            <%= image_tag(book.image.variant(resize: "100"), class: "rounded border") %>
+          <% else %>
+            <div class="book-cover-ph">
+              <%= content_tag(:span, "No page cover yet") %>
+            </div>
+          <% end %>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <span><strong><%= book.title %></strong></span>
+          </li>
+          <li class="list-group-item">
+            <span class="small"><strong class="mr-2">Автор:</strong>
+              <%= book.authors.collect { |a| a.name }.join(', ').html_safe %>
+            </span>
+          </li>
+          <li class="list-group-item">
+            <span class="small"><strong class="mr-2">Дата публикации:</strong>
+              <%= book.published_at.strftime('%d.%m.%Y') %>
+            </span>
+          </li>
+          <li class="list-group-item mt-2">
+            <%= link_to("Подробнее", book_path(book), class: "btn btn-secondary btn-sm", role: "button") %>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</div>
