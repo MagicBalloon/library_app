@@ -1,7 +1,7 @@
 @import 'bootstrap';
 
 /*------------------------------------------*/
-/*  Sticky footer styles
+/*  Sticky footer
 /*------------------------------------------*/
 
   html {
@@ -29,3 +29,13 @@
 /*  Category
 /*------------------------------------------*/
   .book-cover {object-fit: cover;}
+  .book-cover-ph {
+    width: 253px;
+    height: 400px;
+    padding: 1.25rem;
+    background-color: $gray-200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span {color: $gray-600;}
+  }
