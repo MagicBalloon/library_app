@@ -231,8 +231,13 @@ ActiveAdmin.setup do |config|
   #   end
 
   config.namespace :admin do |admin|
-    admin.build_menu :default do |menu|
-      menu.add label: 'Home page', url: '/', priority: 0, html_options: { target: :blank }
+    admin.build_menu :utility_navigation do |menu|
+      menu.add  :label  => proc{ display_name current_active_admin_user },
+                :url    =>  proc{  edit_admin_admin_user_path(current_active_admin_user) },
+                :id     => 'current_user',
+                :if     => proc{ current_active_admin_user? }
+      admin.add_logout_button_to_menu menu
+      menu.add label: 'Home', url: '/', html_options: { target: :blank }
     end
   end
 
