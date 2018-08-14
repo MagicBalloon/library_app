@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1 class="mt-5"><%= @category.title %></h1>
-<div class="album py-5 bg-white">
+<div class="album py-4 bg-white">
   <div class="row">
     <% @books.each do |book| %>
       <div class="col-sm-6 col-md-4 col-lg-3">
@@ -14,12 +14,12 @@
             </div>
           <% end %>
           <div class="card-body">
-            <h5 class="card-title mb-0"><%= book.title %></h5>
+            <h5 class="card-title mb-0"><%= link_to(book.title, book_path(book)) %></h5>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <span class="small text-muted"><strong>Автор:</strong>
-                <%= book.authors.collect { |a| a.name }.join(', ').html_safe %>
+                <%= book.authors.collect { |a| a.name }.join(', ')%>
               </small>
             </li>
             <li class="list-group-item">

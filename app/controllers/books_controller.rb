@@ -1,9 +1,13 @@
 class BooksController < InheritedResources::Base
+  before_action :set_book, only: [:show]
+
+  def show
+    @authors = @book.authors
+  end
 
   private
-
-    def book_params
-      params.require(:book).permit(:title, :description, :published_at, :author_id, :image)
+    def set_book
+      @book = Book.find(params[:id])
     end
 end
 

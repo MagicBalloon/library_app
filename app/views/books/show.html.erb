@@ -1,24 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @book.title %>
-</p>
+<h1 class="mt-5"><%= @book.title %></h1>
+<div class="album py-4 bg-white">
+  <div class="row">
+    <div class="col-lg-3">
+      <%= image_tag(@book.image.variant(resize: "400x400"), class: "book-cover border")  %>
+    </div>
+    <div class="col-lg-9">
+      <ul class="list-group list-group-flush">
+        <% unless @book.description.empty? %>
+          <li class="list-group-item px-0">
+            <p><strong>Описание</strong></p>
+            <p><%= @book.description %></p>
+          </li>
+        <% end %>
+        <li class="list-group-item px-0">
+          <strong class="mr-2">Автор:</strong>
+          <%= @authors.empty? ? "Автор неизвестен" : @authors.collect { |a| a.name }.join(', ') %>
+        </li>
+        <li class="list-group-item px-0">
+          <strong class="mr-2">Дата публикации:</strong>
+          <%= @book.published_at.strftime('%d.%m.%Y') %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @book.description %>
-</p>
-
-<p>
-  <strong>Published at:</strong>
-  <%= @book.published_at %>
-</p>
-
-<p>
-  <strong>Author:</strong>
-  <%= @book.author %>
-</p>
-
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
