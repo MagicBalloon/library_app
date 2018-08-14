@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>LibApp</title>
+    <title>Library App</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= favicon_link_tag 'favicon.ico' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= render partial: 'layouts/main_menu', locals: {categories: Category.all} %>
-    <div class="container">
+    <header>
+      <%= render partial: 'layouts/main_menu', locals: {categories: Category.all} %>
+    </header>
+    <main role="main" class="container">
       <%= yield %>
-    </div>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">Library app | <%= Time.now.year %></span>
+      </div>
+    </footer>
   </body>
 </html>
